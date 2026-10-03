@@ -9,7 +9,8 @@ int B[N][N];
 int C[N][N];
 
 
-void fillMatrix(int M[N][N]) {
+void fillMatrix(int M[N][N]) 
+{
     int i, j;
     for (i = 0; i < N; i++) {
         for (j = 0; j < N; j++) {
@@ -18,7 +19,8 @@ void fillMatrix(int M[N][N]) {
     }
 }
 
-void clearMatrix(int M[N][N]) {
+void clearMatrix(int M[N][N]) 
+{
     int i, j;
     for (i = 0; i < N; i++) {
         for (j = 0; j < N; j++) {
@@ -27,7 +29,8 @@ void clearMatrix(int M[N][N]) {
     }
 }
 
-void multiply() {
+void multiply() 
+{
     int i, j, k;
     clearMatrix(C);
     for (i = 0; i < N; i++) {
@@ -41,7 +44,8 @@ void multiply() {
     }
 }
 
-void LoopInterchange() {
+void LoopInterchange() 
+{
     int i, j, k;
     clearMatrix(C);
     for (i = 0; i < N; i++) {
@@ -54,7 +58,8 @@ void LoopInterchange() {
 }
 
 
-void LoopTiling() {
+void LoopTiling() 
+{
     int i, j, k, a, b, c;
     clearMatrix(C);
     for (a = 0; a < N; a = a + TILE) {
@@ -72,7 +77,8 @@ void LoopTiling() {
     }
 }
 
-void LoopUnrolling() {
+void LoopUnrolling() 
+{
     int i, j, k;
     clearMatrix(C);
     for (i = 0; i < N; i++) {
@@ -91,7 +97,8 @@ void LoopUnrolling() {
     }
 }
 
-int sameResult(int M1[N][N], int M2[N][N]) {
+int sameResult(int M1[N][N], int M2[N][N]) 
+{
     int i, j;
     for (i = 0; i < N; i++) {
         for (j = 0; j < N; j++) {
@@ -136,14 +143,14 @@ int main()
     end_time = (double) clock();
     printf("Loop Interchange : %.4f seconds  (correct = %s)\n", (end_time - start_time) / CLOCKS_PER_SEC, sameResult(C, resultCopy) ? "yes" : "no");
 
-    /* 3. Loop Tiling */
+    /* Loop Tiling */
     
     start_time = (double) clock();
     LoopTiling();
     end_time = (double) clock();
     printf("Loop Tiling : %.4f seconds  (correct = %s)\n", (end_time - start_time) / CLOCKS_PER_SEC, sameResult(C, resultCopy) ? "yes" : "no");
 
-    /* 4. Loop Unrolling */
+    /* Loop Unrolling */
     
     start_time = (double) clock();
     LoopUnrolling();
